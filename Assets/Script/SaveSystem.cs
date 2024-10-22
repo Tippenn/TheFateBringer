@@ -60,15 +60,12 @@ public static class SaveSystem{
     public static string Load(string fileName)
     {
         Init();
-        if(File.Exists(SAVE_FOLDER + fileName + "." + SAVE_EXTENSION))
-        {
-            string saveString = File.ReadAllText(SAVE_FOLDER + fileName + "." + SAVE_EXTENSION);
-            return saveString;
-        }
-        else
-        {
-            return null;
-        }
+        TextAsset savesString = Resources.Load<TextAsset>(fileName);
+        string resourceSaveString = savesString.text;
+        Debug.Log(resourceSaveString);
+        //string saveString = File.ReadAllText(SAVE_FOLDER + fileName + "." + SAVE_EXTENSION);
+        //return saveString;
+        return resourceSaveString;
     }
     
     public static string LoadMostRecentFile()
